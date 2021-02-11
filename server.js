@@ -2,7 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3002
+;
 
 const db = require("./models");
 
@@ -17,12 +18,14 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", 
   { useNewUrlParser: true, 
+    useCreateIndex: true,
+    useFindAndModify: false,
     useUnifiedTopology: true,
   }
 );
 
-//require("./routes/api.js")(app);
-//require("./routes/htmlRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
 // Start the server*/
 
 
