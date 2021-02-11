@@ -1,12 +1,12 @@
 // looking at the api.js 
 //    using ("/api/workouts")
 // using the mini project API as ref. 
-var db = require("../models");
+
 const Workout = require("../models/workout");
 
-module.exports = function(db) {
+module.exports = function(app) {
 
-    db.post("/api/transaction", ({ body }, res) => {
+    app.post("/api/workouts", ({ body }, res) => {
         Workout.create(body)
           .then(dbWorkout => {
             res.json(dbWorkout);
@@ -16,19 +16,8 @@ module.exports = function(db) {
           });
       });
       
-      db.post("/api/workouts", ({ body }, res) => {
-        Workout.insertMany(body)
-          .then(dbWorkout => {
-            res.json(dbWorkout);
-          })
-          .catch(err => {
-            res.status(400).json(err);
-          });
-      });
-      
-      db.get("/api/", (req, res) => {
+      app.get("/api/workouts", (req, res) => {
         Workout.find({})
-          .sort({ date: -1 })
           .then(dbWorkout => {
             res.json(dbWorkout);
           })
@@ -36,8 +25,5 @@ module.exports = function(db) {
             res.status(400).json(err);
           });
       });
-      
-      module.exports = db;
-      
- 
+
 };

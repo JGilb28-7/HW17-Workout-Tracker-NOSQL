@@ -1,5 +1,10 @@
 # HW17-Workout-Tracker-NOSQL
 Unit 17 NoSQL Homework: Workout Tracker
+
+## resources used:
+  StephanyCamacho - used as a ref for the API Routes to adjust. 
+
+
 ## HW Task List for Workout Tracker
 Create Mongo database with a Mongoose schema and handle routes with Express
 
