@@ -15,35 +15,49 @@ const Schema = mongoose.Schema;
 const workoutSchema = new Schema({
   day:{
     type: Date,
+    default: () => new Date(),
     
   },
+// from central grading comments 2.11.2021
+  //exercises: [ { type: { type: String, trim: true, required: 'Enter an exercise type', }
   exercises: [
     {
       type: {
         type: String,
-        required: "Enter type"
+        trim: true,
+        required: "Enter an exercise type"
       },
       name: {
         type: String,
-        required: "Entername" 
+        trim: true,
+        required: "Enter Name of the exercise" 
       },
       duration: {
         type: Number,
-        required: "Enter duration"
+        trim: true,
+        required: "Enter duration of thr exercise"
       },
       weight: {
-        type: Number
+        type: Number,
+        trim: true,
+    
       },
       reps: {
-        type: Number
+        type: Number,
+        trim: true,
+   
       },
       sets: {
-        type: Number
+        type: Number,
+        trim: true,
+
       },
       distance: {
-        type: Number
-      }
-    }
+        type: Number,
+        trim: true,
+
+    },
+  },
   ]
 });
 
